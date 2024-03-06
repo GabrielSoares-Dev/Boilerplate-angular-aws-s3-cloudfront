@@ -1,7 +1,0 @@
-version: '3.5'
-services:
-  Boilerplate-angular-docker-portainer:
-    container_name: Boilerplate-angular-docker-portainer
-    image: gabrielsoaresdev/boilerplate-angular:latest
-    ports:
-      - 4200:80

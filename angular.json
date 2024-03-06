@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Boilerplate-angular-docker-portainer": {
+    "Boilerplate-angular-aws-amplify-terraform": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/Boilerplate-angular-docker-portainer",
+            "outputPath": "dist/Boilerplate-angular-aws-amplify-terraform",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Boilerplate-angular-docker-portainer:build:production"
+              "buildTarget": "Boilerplate-angular-aws-amplify-terraform:build:production"
             },
             "development": {
-              "buildTarget": "Boilerplate-angular-docker-portainer:build:development"
+              "buildTarget": "Boilerplate-angular-aws-amplify-terraform:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Boilerplate-angular-docker-portainer:build"
+            "buildTarget": "Boilerplate-angular-aws-amplify-terraform:build"
           }
         },
         "test": {

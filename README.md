@@ -1,6 +1,6 @@
 # Angular 17 Boilerplate
 
-This is an Angular 17 boilerplate with Docker deploy and implemented authentication.
+This is an Angular 17 boilerplate  aws amplify with terraform
 
 ## Requirements
 
@@ -11,8 +11,8 @@ This is an Angular 17 boilerplate with Docker deploy and implemented authenticat
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/GabrielSoares-Dev/Boilerplate-angular-docker-portainer.git
-    cd Boilerplate-angular-docker-portainer
+    git clone https://github.com/GabrielSoares-Dev/Boilerplate-angular-aws-amplify-terraform.git
+    cd Boilerplate-angular-aws-amplify-terraform
     ```
 
 2. **Install Dependencies:**
