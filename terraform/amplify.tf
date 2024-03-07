@@ -1,7 +1,7 @@
 resource "aws_amplify_app" "app" {
   name         = "Boilerplate-angular-aws-amplify-terraform-${var.environment}"
   repository   = var.repository_url
-  access_token = var.access_token
+  access_token = var.secret_token
   enable_branch_auto_build = true
   build_spec   = <<-EOT
     version: 1
