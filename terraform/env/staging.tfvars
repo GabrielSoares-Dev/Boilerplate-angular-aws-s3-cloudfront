@@ -1,0 +1,2 @@
+environment = "STAGING"
+branch = "staging"

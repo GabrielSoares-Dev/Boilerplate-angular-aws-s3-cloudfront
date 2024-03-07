@@ -1,8 +1,8 @@
 resource "aws_amplify_app" "app" {
   name         = "Boilerplate-angular-aws-amplify-terraform-${var.environment}"
   repository   = var.repository_url
-  access_token = var.test
-  enable_branch_auto_build = true
+  access_token = var.access_token
+
   build_spec   = <<-EOT
     version: 1
     frontend:
@@ -25,8 +25,7 @@ resource "aws_amplify_app" "app" {
 
 resource "aws_amplify_branch" "master" {
   app_id      = aws_amplify_app.app.id
-  branch_name = "master"
-  enable_auto_build = true
+  branch_name = var.branch
 
   framework = "Angular"
   stage     = var.environment
