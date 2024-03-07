@@ -1,2 +1,1 @@
 environment = "STAGING"
-branch = "staging"

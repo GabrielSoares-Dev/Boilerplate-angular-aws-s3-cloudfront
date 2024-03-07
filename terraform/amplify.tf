@@ -25,7 +25,7 @@ resource "aws_amplify_app" "app" {
 
 resource "aws_amplify_branch" "master" {
   app_id      = aws_amplify_app.app.id
-  branch_name = var.branch
+  branch_name = "master"
 
   framework = "Angular"
   stage     = var.environment
