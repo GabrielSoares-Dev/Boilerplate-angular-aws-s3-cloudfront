@@ -1,11 +1,10 @@
 variable "environment" {
   type    = string
-  default = "DEVELOPMENT"
+  default = "DEV"
 }
 
-variable "repository_url" {
+variable "repository" {
   type    = string
-  default = "https://github.com/GabrielSoares-Dev/Boilerplate-angular-aws-amplify-terraform"
 }
 
 variable "access_token" {
