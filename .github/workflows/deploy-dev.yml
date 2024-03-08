@@ -23,6 +23,8 @@ jobs:
          run: terraform init
        - name: Validate
          run: terraform validate
+       - name: Create workspace
+         run: terraform workspace new dev
        - name: Select workspace
          run: terraform workspace select dev
        - name: Plan
