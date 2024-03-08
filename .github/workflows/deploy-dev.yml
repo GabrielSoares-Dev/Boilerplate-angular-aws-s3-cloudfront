@@ -9,6 +9,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
   TF_VAR_repository: ${{secrets.REPOSITORY}}
   TF_VAR_access_token: ${{secrets.GIT_HUB_SECRET}}
+  TF_VAR_environment: DEV
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,7 +34,7 @@ jobs:
         run: terraform plan -out plan.out
       - name: Apply
         id: apply
-        run: terraform apply -var-file=./env/dev.tfvars plan.out
+        run: terraform apply plan.out
       - name: Export outputs
         id: export_outputs
         run: |
