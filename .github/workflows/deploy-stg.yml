@@ -30,7 +30,7 @@ jobs:
         run: terraform plan -out plan.out
       - name: Apply
         id: apply
-        run: terraform apply ./env/stg.tfvars plan.out
+        run: terraform apply -var-file=./env/stg.tfvars plan.out
       - name: Export outputs
         id: export_outputs
         run: |
