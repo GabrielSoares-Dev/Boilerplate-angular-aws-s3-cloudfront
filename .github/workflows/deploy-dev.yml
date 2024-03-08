@@ -32,7 +32,8 @@ jobs:
        - name: Plan
          run: terraform plan -out plan.out
        - name: Apply
+         id: apply
          run: terraform apply plan.out
        - name: Trigger update
-         run:  curl -X POST -d {} "${{ steps.Apply.outputs.webhook_trigger }}" -H "Content-Type:application/json"
+         run:  curl -X POST -d {} "${{ steps.apply.outputs.webhook_trigger }}" -H "Content-Type:application/json"
          
