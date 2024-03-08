@@ -31,5 +31,6 @@ resource "aws_amplify_branch" "master" {
 
 resource "aws_amplify_webhook" "master" {
   app_id      = aws_amplify_app.app.id
+  description = aws_amplify_app.app.name
   branch_name = aws_amplify_branch.master.branch_name
 }
