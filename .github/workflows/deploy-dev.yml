@@ -31,14 +31,12 @@ jobs:
         run: terraform workspace select dev
       - name: Plan
         run: terraform plan -out plan.out
-      - name: Destroy
-        run: terraform destroy -auto-approve
-      # - name: Apply
-      #   id: apply
-      #   run: terraform apply plan.out
-      # - name: Export outputs
-      #   id: export_outputs
-      #   run: |
-      #     echo "WEBHOOK=$(terraform output -raw webhook_trigger)" >> $GITHUB_OUTPUT
-      # - name: Trigger update
-      #   run: curl -X POST -d {} "${{ steps.export_outputs.outputs.WEBHOOK }}" -H "Content-Type:application/json"
+      - name: Apply
+        id: apply
+        run: terraform apply plan.out
+      - name: Export outputs
+        id: export_outputs
+        run: |
+          echo "WEBHOOK=$(terraform output -raw webhook_trigger)" >> $GITHUB_OUTPUT
+      - name: Trigger update
+        run: curl -X POST -d {} "${{ steps.export_outputs.outputs.WEBHOOK }}" -H "Content-Type:application/json"
