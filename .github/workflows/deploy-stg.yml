@@ -1,9 +1,6 @@
-name: DEPLOY - DEV
+name: DEPLOY - STG
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 env:
   AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
   AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
@@ -28,7 +25,7 @@ jobs:
       - name: Validate
         run: terraform validate
       - name: Select workspace
-        run: terraform workspace select dev
+        run: terraform workspace select stg
       - name: Plan
         run: terraform plan -out plan.out
       - name: Apply
