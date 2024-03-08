@@ -3,7 +3,7 @@ resource "aws_amplify_app" "app" {
   repository   = var.repository
   access_token = var.access_token
 
-  build_spec   = <<-EOT
+  build_spec = <<-EOT
     version: 1
     frontend:
       phases:
@@ -26,7 +26,11 @@ resource "aws_amplify_app" "app" {
 resource "aws_amplify_branch" "master" {
   app_id      = aws_amplify_app.app.id
   branch_name = "master"
+  framework   = "Angular"
+  stage       = var.environment
+}
 
-  framework = "Angular"
-  stage     = var.environment
+resource "aws_amplify_webhook" "master" {
+  app_id      = aws_amplify_app.app.id
+  branch_name = aws_amplify_branch.master.branch_name
 }
