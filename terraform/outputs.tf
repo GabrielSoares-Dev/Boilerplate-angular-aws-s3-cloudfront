@@ -1,3 +1,3 @@
-output "frontend_url" {
-  value = aws_amplify_app.app.default_domain
+output "webhook_deploy" {
+  value = aws_amplify_webhook.master.url
 }

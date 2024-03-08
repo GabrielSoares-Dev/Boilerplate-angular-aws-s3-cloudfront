@@ -26,4 +26,6 @@ jobs:
        - name: Select workspace
          run: terraform workspace select dev
        - name: Plan
-         run: terraform plan
+         run: terraform plan -out plan.out
+       - name: Apply
+         run: terraform apply plan.out
