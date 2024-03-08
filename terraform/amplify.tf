@@ -27,7 +27,6 @@ resource "aws_amplify_branch" "master" {
   app_id      = aws_amplify_app.app.id
   branch_name = "master"
   framework   = "Angular"
-  stage       = var.environment
 }
 
 resource "aws_amplify_webhook" "master" {
