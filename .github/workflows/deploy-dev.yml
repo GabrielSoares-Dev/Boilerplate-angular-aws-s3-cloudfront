@@ -35,9 +35,9 @@ jobs:
        - name: Apply
          id: apply
          run: terraform apply plan.out
-       - name: Export outputs
-         id: export_outputs
-         run: terraform output webhook_trigger
+      #  - name: Export outputs
+      #    id: export_outputs
+      #    run: terraform output webhook_trigger
        - name: Trigger update
-         run:  curl -X POST -d {} "${{ steps.apply.outputs.webhook_trigger }}" -H "Content-Type:application/json"
+         run:  curl -X POST -d {} "terraform output webhook_trigger" -H "Content-Type:application/json"
          
