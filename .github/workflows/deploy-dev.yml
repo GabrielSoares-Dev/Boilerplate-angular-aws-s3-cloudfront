@@ -23,6 +23,7 @@ jobs:
          uses: hashicorp/setup-terraform@v3
          with:
           terraform_version: "1.2.0"
+          terraform_wrapper: false
        - name: Init
          run: terraform init
        - name: Validate
@@ -34,6 +35,9 @@ jobs:
        - name: Apply
          id: apply
          run: terraform apply plan.out
+       - name: Export outputs
+         id: export_outputs
+         run: terraform output webhook_trigger
        - name: Trigger update
          run:  curl -X POST -d {} "${{ steps.apply.outputs.webhook_trigger }}" -H "Content-Type:application/json"
          
