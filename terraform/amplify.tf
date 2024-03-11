@@ -34,3 +34,14 @@ resource "aws_amplify_webhook" "master" {
   description = aws_amplify_app.app.name
   branch_name = aws_amplify_branch.master.branch_name
 }
+
+resource "aws_amplify_domain_association" "app_domain" {
+  app_id      = aws_amplify_app.app.id
+  domain_name = aws_route53_zone.primary.name
+  depends_on  = [aws_route53_zone.primary]
+
+  sub_domain {
+    branch_name = aws_amplify_branch.master.branch_name
+    prefix      = var.environment == "PROD" ? "" : lower(var.environment)
+  }
+}
