@@ -1,5 +1,5 @@
 resource "aws_amplify_app" "app" {
-  name         = "Boilerplate-angular-aws-amplify-terraform-${var.environment}"
+  name         = "Boilerplate-angular-aws-amplify-terraform-${lower(var.environment)}"
   repository   = "https://github.com/GabrielSoares-Dev/Boilerplate-angular-aws-amplify-terraform"
   access_token = var.access_token
 
@@ -33,4 +33,16 @@ resource "aws_amplify_webhook" "master" {
   app_id      = aws_amplify_app.app.id
   description = aws_amplify_app.app.name
   branch_name = aws_amplify_branch.master.branch_name
+}
+
+resource "aws_amplify_domain_association" "app_domain" {
+  app_id      = aws_amplify_app.app.id
+  domain_name = aws_route53_zone.primary.name
+  depends_on  = [aws_route53_zone.primary]
+  wait_for_verification = false
+
+  sub_domain {
+    branch_name = aws_amplify_branch.master.branch_name
+    prefix      = var.environment == "PROD" ? "" : lower(var.environment)
+  }
 }
