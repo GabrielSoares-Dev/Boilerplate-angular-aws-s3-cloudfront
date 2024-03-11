@@ -39,6 +39,7 @@ resource "aws_amplify_domain_association" "app_domain" {
   app_id      = aws_amplify_app.app.id
   domain_name = aws_route53_zone.primary.name
   depends_on  = [aws_route53_zone.primary]
+  wait_for_verification = false
 
   sub_domain {
     branch_name = aws_amplify_branch.master.branch_name
