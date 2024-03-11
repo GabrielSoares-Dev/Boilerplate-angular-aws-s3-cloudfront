@@ -1,5 +1,5 @@
 resource "aws_amplify_app" "app" {
-  name         = "Boilerplate-angular-aws-amplify-terraform-${var.environment}"
+  name         = "Boilerplate-angular-aws-amplify-terraform-${lower(var.environment)}"
   repository   = "https://github.com/GabrielSoares-Dev/Boilerplate-angular-aws-amplify-terraform"
   access_token = var.access_token
 
