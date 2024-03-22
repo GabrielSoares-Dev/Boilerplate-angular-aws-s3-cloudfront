@@ -9,8 +9,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "remote-state-devops-team"
+    bucket = "remote-state-devops-team-us"
     key    = "Boilerplate-angular-aws-amplify-terraform/terraform.tfstate"
-    region = "sa-east-1"
+    region = "us-east-2"
   }
 }
