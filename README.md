@@ -19,7 +19,7 @@ This is an Angular 17 boilerplate  aws s3 and cloudfront
 
     ```bash
     npm install
-    `
+    ```
 
 3. **Start dev server:**
 
@@ -40,7 +40,7 @@ This is an Angular 17 boilerplate  aws s3 and cloudfront
 
     ```bash
     npm run lint:test
-    `
+    ```
 
 3. **Fix code style:**
 
