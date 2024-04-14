@@ -1,5 +1,5 @@
 {
-  "name": "Boilerplate-angular-aws-amplify-terraform",
+  "name": "Boilerplate-angular-aws-s3-cloudfront",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

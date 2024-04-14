@@ -1,6 +1,6 @@
 # Angular 17 Boilerplate
 
-This is an Angular 17 boilerplate  aws amplify with terraform
+This is an Angular 17 boilerplate  aws s3 and cloudfront
 
 ## Requirements
 
@@ -11,8 +11,8 @@ This is an Angular 17 boilerplate  aws amplify with terraform
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/GabrielSoares-Dev/Boilerplate-angular-aws-amplify-terraform.git
-    cd Boilerplate-angular-aws-amplify-terraform
+    git clone https://github.com/GabrielSoares-Dev/Boilerplate-angular-aws-s3-cloudfront.git
+    cd Boilerplate-angular-aws-s3-cloudfront
     ```
 
 2. **Install Dependencies:**
