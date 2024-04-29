@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "boilerplate_angular_aws_s3_cloudfront_bucket" {
-  bucket = "boilerplate-angular_aws_s3-cloudfront-bucket-${lower(var.environment)}"
+  bucket = "boilerplate-angular-aws-s3-cloudfront-bucket-${lower(var.environment)}"
 
   tags = {
-    name        = "boilerplate-angular_aws_s3-cloudfront-bucket-${lower(var.environment)}"
+    name        = "boilerplate-angular-aws-s3-cloudfront-bucket-${lower(var.environment)}"
     environment = lower(var.environment)
 
   }
