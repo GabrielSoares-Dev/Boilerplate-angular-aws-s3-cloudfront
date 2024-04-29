@@ -27,12 +27,13 @@ jobs:
       - name: Validate
         run: terraform validate
       - name: Select workspace
-        run: terraform workspace new dev
+        run: terraform workspace  new dev
       - name: Plan
         run: terraform plan -out plan.out
       - name: Apply
         run: terraform apply plan.out
   deploy:
+    needs: terraform
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -52,4 +53,5 @@ jobs:
           destination: s3://${{ secrets.BUCKET_DEV }}
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-2
   
