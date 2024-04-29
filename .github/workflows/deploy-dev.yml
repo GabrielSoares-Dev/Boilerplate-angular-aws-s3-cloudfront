@@ -27,7 +27,7 @@ jobs:
       - name: Validate
         run: terraform validate
       - name: Select workspace
-        run: terraform workspace  new dev
+        run: terraform workspace select dev
       - name: Plan
         run: terraform plan -out plan.out
       - name: Apply
