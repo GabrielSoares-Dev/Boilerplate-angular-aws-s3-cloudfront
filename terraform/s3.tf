@@ -14,7 +14,7 @@ resource "aws_s3_bucket_acl" "boilerplate_angular_aws_s3_cloudfront_bucket_acl" 
 }
 
 resource "aws_s3_bucket_versioning" "boilerplate_angular_aws_s3_cloudfront_bucket_versioning" {
-  bucket = aws_s3_bucket.example.id
+  bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
 
   versioning_configuration {
     status = "Enabled"
@@ -22,7 +22,7 @@ resource "aws_s3_bucket_versioning" "boilerplate_angular_aws_s3_cloudfront_bucke
 }
 
 
-resource "aws_s3_bucket_website_configuration" "example" {
+resource "aws_s3_bucket_website_configuration" "boilerplate_angular_aws_s3_cloudfront_bucket_website_config" {
   bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
 
   index_document {
