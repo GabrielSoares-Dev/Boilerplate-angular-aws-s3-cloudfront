@@ -36,7 +36,7 @@ default_cache_behavior {
 }
 
 resource "aws_cloudfront_origin_access_control" "boilerplate_angular_aws_s3_cloudfront_distribution_origin_access_control" {
-  name                              = "boilerplate_angular_aws_s3_cloudfront_distribution_origin_access_control"
+  name                              = "cloudfront_distribution_origin_access_control"
   description                       = "Access control to boilerplate"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
