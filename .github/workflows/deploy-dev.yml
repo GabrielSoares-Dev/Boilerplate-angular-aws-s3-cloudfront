@@ -51,7 +51,7 @@ jobs:
         with:
           command: cp
           source: ./dist/Boilerplate-angular-aws-s3-cloudfront/browser
-          destination: s3://${{ secrets.BUCKET_DEV }}/
+          destination: s3://${{ secrets.BUCKET_DEV }}/artifacts
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-2
