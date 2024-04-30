@@ -2,8 +2,8 @@ resource "aws_route53_zone" "primary" {
   name = "school-guardian.net.br"
 
   tags = {
-    "managed-by"   = "terraform"
-    "environment"  = var.environment
+    "managed-by"  = "terraform"
+    "environment" = var.environment
   }
 }
 
