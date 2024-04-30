@@ -46,7 +46,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build --prod
-      - name: Upload build to s3
+      - name: Upload to s3
         uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
           command: cp

@@ -17,6 +17,22 @@ resource "aws_s3_bucket_public_access_block" "boilerplate_angular_aws_s3_cloudfr
   restrict_public_buckets = false
 }
 
+resource "aws_s3_bucket_policy" "boilerplate_angular_aws_s3_cloudfront_bucket_policy" {
+  bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect    = "Allow",
+        Principal = "*",
+        Action    = "s3:GetObject",
+        Resource  = boilerplate_angular_aws_s3_cloudfront_bucket.arn
+      }
+    ]
+  })
+}
+
 resource "aws_s3_bucket_ownership_controls" "boilerplate_angular_aws_s3_cloudfront_bucket_ownership_controls" {
   bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
 
