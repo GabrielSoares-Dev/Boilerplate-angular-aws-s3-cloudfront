@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "boilerplate_angular_aws_s3_cloudfront_bucket" {
   bucket = "boilerplate-angular-aws-s3-cloudfront-bucket-${lower(var.environment)}"
-
+  force_destroy = true
   tags = {
     name        = "boilerplate-angular-aws-s3-cloudfront-bucket-${lower(var.environment)}"
     environment = lower(var.environment)
