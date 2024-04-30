@@ -8,6 +8,14 @@ resource "aws_s3_bucket" "boilerplate_angular_aws_s3_cloudfront_bucket" {
   }
 }
 
+resource "aws_s3_bucket_ownership_controls" "boilerplate_angular_aws_s3_cloudfront_bucket_ownership_controls" {
+  bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
+
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
 resource "aws_s3_bucket_acl" "boilerplate_angular_aws_s3_cloudfront_bucket_acl" {
   bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
   acl    = "public-read"
