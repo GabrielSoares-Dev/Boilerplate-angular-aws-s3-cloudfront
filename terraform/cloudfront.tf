@@ -37,6 +37,7 @@ resource "aws_cloudfront_distribution" "boilerplate_angular_aws_s3_cloudfront_di
   }
   viewer_certificate {
     acm_certificate_arn = aws_acm_certificate.certificate.arn
+    ssl_support_method = "sni-only"
   }
 
   tags = {

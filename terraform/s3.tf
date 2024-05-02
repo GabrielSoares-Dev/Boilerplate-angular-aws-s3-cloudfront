@@ -31,6 +31,7 @@ resource "aws_s3_bucket_policy" "boilerplate_angular_aws_s3_cloudfront_bucket_po
       }
     ]
   })
+  depends_on = [aws_s3_bucket_public_access_block.boilerplate_angular_aws_s3_cloudfront_bucket_public_access_block]
 }
 
 resource "aws_s3_bucket_ownership_controls" "boilerplate_angular_aws_s3_cloudfront_bucket_ownership_controls" {
