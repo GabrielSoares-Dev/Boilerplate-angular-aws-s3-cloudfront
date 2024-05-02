@@ -46,6 +46,8 @@ resource "aws_s3_bucket_ownership_controls" "boilerplate_angular_aws_s3_cloudfro
 resource "aws_s3_bucket_acl" "boilerplate_angular_aws_s3_cloudfront_bucket_acl" {
   bucket = aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket.id
   acl    = "public-read"
+
+  depends_on = [ aws_s3_bucket_ownership_controls.boilerplate_angular_aws_s3_cloudfront_bucket_ownership_controls ]
 }
 
 resource "aws_s3_bucket_versioning" "boilerplate_angular_aws_s3_cloudfront_bucket_versioning" {
