@@ -9,7 +9,7 @@ resource "aws_cloudfront_distribution" "boilerplate_angular_aws_s3_cloudfront_di
   enabled             = true
   default_root_object = "index.html"
 
-  # aliases = [var.domain]
+  aliases = [var.domain]
   default_cache_behavior {
     compress               = true
     allowed_methods        = ["GET", "HEAD"]
@@ -36,9 +36,8 @@ resource "aws_cloudfront_distribution" "boilerplate_angular_aws_s3_cloudfront_di
     }
   }
   viewer_certificate {
-    cloudfront_default_certificate = true
-    # acm_certificate_arn = aws_acm_certificate.certificate.arn
-    # ssl_support_method = "sni-only"
+    acm_certificate_arn = aws_acm_certificate.certificate.arn
+    ssl_support_method  = "sni-only"
   }
 
   tags = {
