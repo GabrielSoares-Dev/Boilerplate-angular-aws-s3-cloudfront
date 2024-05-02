@@ -7,4 +7,5 @@ resource "aws_acm_certificate" "certificate" {
 
 resource "aws_acm_certificate_validation" "certificate_validation" {
   certificate_arn = aws_acm_certificate.certificate.arn
+  provider = aws.us_east-1
 }
