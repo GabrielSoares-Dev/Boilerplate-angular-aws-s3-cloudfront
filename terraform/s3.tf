@@ -21,6 +21,8 @@ resource "aws_s3_bucket_policy" "boilerplate_angular_aws_s3_cloudfront_bucket_po
       }
     ]
   })
+
+  depends_on = [ aws_s3_bucket.boilerplate_angular_aws_s3_cloudfront_bucket]
 }
 
 

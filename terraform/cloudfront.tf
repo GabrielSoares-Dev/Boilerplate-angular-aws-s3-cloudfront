@@ -19,7 +19,16 @@ resource "aws_cloudfront_distribution" "boilerplate_angular_aws_s3_cloudfront_di
     max_ttl                = 31536000
     target_origin_id       = local.boilerplate_angular_aws_s3_cloudfront_distribution_origin_id
     viewer_protocol_policy = "redirect-to-https"
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
   }
+
 
   restrictions {
     geo_restriction {
