@@ -7,12 +7,10 @@ resource "aws_route53_zone" "primary" {
   }
 }
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "subdomain" {
   zone_id = aws_route53_zone.primary.id
-  name    = "www"
-  type    = "A"
-
-
+  name    = var.environment == "PROD" ? "" : lower(var.environment)
+  type    = "CNAME"
 
   alias {
     name                   = aws_cloudfront_distribution.boilerplate_angular_aws_s3_cloudfront_distribution.domain_name
