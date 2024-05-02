@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "boilerplate_angular_aws_s3_cloudfront_di
 
   enabled             = true
   default_root_object = "index.html"
-
+  wait_for_deployment = false
   aliases = [var.domain]
   default_cache_behavior {
     compress               = true
