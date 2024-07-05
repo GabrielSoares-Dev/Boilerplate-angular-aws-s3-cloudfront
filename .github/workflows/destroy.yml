@@ -1,0 +1,14 @@
+name: DESTROY - DEV
+on:
+  workflow_dispatch:
+jobs:
+  aws_amplify:
+    name: destroy
+    uses: GabrielSoares-Dev/workflows/.github/workflows/angular-s3-cloudfront-destroy.yml@master
+    with:
+      work_dir: ./terraform
+      environment: dev
+      env_vars_path: env/dev.tfvars
+    secrets:
+      aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+      aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}

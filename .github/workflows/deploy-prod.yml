@@ -1,71 +1,18 @@
 name: DEPLOY - PROD
 on:
   workflow_dispatch:
-env:
-  AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-  AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-  TF_VAR_domain: ${{ secrets.DOMAIN_PROD }}
-  TF_VAR_environment: PROD
 jobs:
-  terraform:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./terraform
-    outputs:
-      DISTRIBUTION_ID: ${{ steps.export_outputs.outputs.DISTRIBUTION_ID }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: "1.2.0"
-      - name: Init
-        run: terraform init
-      - name: Validate
-        run: terraform validate
-      - name: Select workspace
-        run: terraform workspace select dev
-      - name: Plan
-        run: terraform plan -out plan.out
-      - name: Apply
-        run: terraform apply plan.out
-      - name: Export outputs
-        id: export_outputs
-        run: |
-          echo "DISTRIBUTION_ID=$(terraform output -raw distribution_id)" >> $GITHUB_OUTPUT
-  deploy:
-    needs: terraform
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18.x"
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build --prod
-      - name: Upload to s3
-        uses: keithweaver/aws-s3-github-action@v1.0.0
-        with:
-          command: cp
-          source: ./dist/Boilerplate-angular-aws-s3-cloudfront/browser/
-          destination: s3://${{ secrets.BUCKET_PROD }}/
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-2
-          flags: --recursive
-      - name: Invalidate CloudFront cache
-        uses: chetan/invalidate-cloudfront-action@v2
-        env:
-          DISTRIBUTION: ${{ needs.terraform.outputs.DISTRIBUTION_ID}}
-          PATHS: "/*"
-          AWS_REGION: "us-east-2"
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  
+  s3_cloudfront:
+    name: deploy
+    uses: GabrielSoares-Dev/workflows/.github/workflows/angular-s3-cloudfront-deploy.yml@master
+    with:
+      work_dir: ./terraform
+      environment: prod
+      env_vars_path: env/prod.tfvars
+      node_version: '18.x'
+      build_file_path: ./dist/Boilerplate-angular-aws-s3-cloudfront/browser/
+    secrets:
+      aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID_PROD}}
+      aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY_PROD}}
+      aws_region: ${{secrets.AWS_REGION}}
+      bucket_name: ${{ secrets.BUCKET_PROD }}
