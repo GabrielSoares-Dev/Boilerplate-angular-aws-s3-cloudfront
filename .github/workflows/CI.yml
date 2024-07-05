@@ -1,43 +1,18 @@
 name: CI
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - master
-env:
-  AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-  AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 jobs:
-  code:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18.x"
-      - name: Install dependencies
-        run: npm i
-      - name: Check lint
-        run: npm run lint:test
-      - name: Check types
-        run: npm run typecheck
-      - name: Running tests
-        run: npm run test:coverage
-  terraform:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./terraform
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: "1.2.0"
-      - name: Terraform init
-        run: terraform init
-      - name: Terraform Validate
-        run: terraform validate
+  s3_cloudfront:
+    name: CI
+    uses: GabrielSoares-Dev/workflows/.github/workflows/angular-s3-cloudfront-CI.yml@master
+    with:
+      node_version: '18.x'
+      work_dir: ./terraform
+      environment: dev
+      env_vars_path: env/dev.tfvars
+    secrets:
+      aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+      aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}

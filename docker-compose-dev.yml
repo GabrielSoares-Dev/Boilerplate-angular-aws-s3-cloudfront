@@ -1,17 +1,17 @@
 version: '3.5'
 services:
-  Boilerplate-angular-aws-s3-cloudfront:
-    container_name: Boilerplate-angular-aws-s3-cloudfront
+  boilerplate-angular-aws-s3-cloudfront:
+    container_name: boilerplate-angular-aws-s3-cloudfront
     build:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
       - .:/app
-      - Boilerplate-angular-aws-s3-cloudfront-volume:/app/node_modules
+      - boilerplate-angular-aws-s3-cloudfront-volume:/app/node_modules
     ports:
       - 4200:4200
     stdin_open: true
     tty: true
 
 volumes:
-  Boilerplate-angular-aws-s3-cloudfront-volume:
+  boilerplate-angular-aws-s3-cloudfront-volume:
