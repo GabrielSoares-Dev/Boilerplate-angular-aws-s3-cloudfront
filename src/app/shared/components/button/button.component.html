@@ -8,11 +8,15 @@
     'button-primary': isPrimary(),
     'button-secondary': isSecondary()
   }">
-  <div *ngIf="isLoading" class="button-loading-container">
-    <ng-icon name="cssSpinner" class="button-loading-icon"></ng-icon>
-    Processando...
-  </div>
-  <div *ngIf="!isLoading">
-    {{ label }}
-  </div>
+  @if (isLoading) {
+    <div class="button-loading-container">
+      <ng-icon name="cssSpinner" class="button-loading-icon"></ng-icon>
+      Processando...
+    </div>
+  }
+  @if (!isLoading) {
+    <div>
+      {{ label }}
+    </div>
+  }
 </button>

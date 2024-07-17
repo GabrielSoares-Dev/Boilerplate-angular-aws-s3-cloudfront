@@ -16,6 +16,7 @@ export class InputComponent {
   @Input() disabled = false;
   @Input() hasError = false;
   @Input() errorMessage = '';
+  @Input() mask = '';
   @Input() control = new FormControl();
 
   @Output() changeEvent = new EventEmitter();

@@ -11,6 +11,8 @@ import { ThemeService } from '@services/theme/theme.service';
 import { CookieService } from '@services/cookie/cookie.service';
 import { TranslateService } from '@services/translate/translate.service';
 import { UserService } from '@services/user/user.service';
+import { RouterLink } from '@angular/router';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import {
   ToastrModule as ToastLibModule,
@@ -28,6 +30,9 @@ import { HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [ButtonComponent, InputComponent],
   imports: [
+    NgxMaskDirective,
+    NgxMaskPipe,
+    RouterLink,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -49,6 +54,7 @@ import { HttpClient } from '@angular/common/http';
     ReactiveFormsModule,
     TranslateModule,
     CommonModule,
+    RouterLink,
   ],
   providers: [
     ToastLibService,
@@ -60,6 +66,7 @@ import { HttpClient } from '@angular/common/http';
     CookieService,
     TranslateService,
     UserService,
+    provideNgxMask(),
   ],
 })
 export class SharedModule {}

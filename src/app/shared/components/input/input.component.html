@@ -15,9 +15,12 @@
       (keyup)="onKeyup()"
       (keydown)="onKeydown()"
       (input)="onInput()"
-      [class.input-has-error]="hasError" />
+      [class.input-has-error]="hasError"
+      [mask]="mask" />
   </div>
-  <div *ngIf="hasError" class="input-container-error-message">
-    <p class="input-error-message">{{ errorMessage }}</p>
-  </div>
+  @if (hasError) {
+    <div class="input-container-error-message">
+      <p class="input-error-message">{{ errorMessage }}</p>
+    </div>
+  }
 </div>
